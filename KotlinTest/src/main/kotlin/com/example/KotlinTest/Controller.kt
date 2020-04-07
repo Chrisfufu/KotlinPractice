@@ -4,7 +4,11 @@ import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 import java.util.*
 
-
+/*
+* This section is the first part of the sample log,
+* I have a post method and a get method.
+* Post method is to post a sessionId and userId that is shown in the Sample Log
+*/
 @RestController
 @RequestMapping("/session")
 class SessionController(val sessionRepository: SessionRepository){
@@ -26,6 +30,14 @@ class SessionController(val sessionRepository: SessionRepository){
         return hotelsByName
     }
 }
+
+/*
+* This section is the second part of the sample log,
+* I have a post method and a get method.
+* For post method
+* action Entity has ManytoOne relationship to Session Entity.
+* So I need to add session repository in the arguments
+*/
 @RestController
 @RequestMapping("/action")
 class ActionsController(val actionsRepository: ActionsRepository, val sessionRepository: SessionRepository){
@@ -43,6 +55,13 @@ class ActionsController(val actionsRepository: ActionsRepository, val sessionRep
     }
 }
 
+/*
+* This section is the third part of the sample log,
+* I have a post method and a get method.
+* For post method
+* property Entity has ManytoOne relationship to action Entity.
+* So I need to add action repository in the arguments
+*/
 @RestController
 @RequestMapping("/properties")
 class PropertiesController(val actionsRepository: ActionsRepository, val propertiesRepository: PropertiesRepository){
