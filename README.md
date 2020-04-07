@@ -14,3 +14,51 @@ Logs are also very important to the develop process. It helps the team to solve 
 Last thing I should say is the team should use store procedure. The application is used in a very large data process everyday, the application should store all data in an atomic store procedure, which means that if anything wrong happens in the save method, then abort the whole process.    
 
 # Evaluation Considerations  
+1. I don't have time to write tests for each api. But I have manually tested it. If the save method does not work, then it will return an error:  
+error 500: it means that the foreign key may not be found. or you've added a null value to a non-null field.  
+error 400: request body may not working.  
+error 404: the most common error, the api does not exist.  
+
+2. Yes. there are 2 mock data provided when start the website. 
+API:  
+http://localhost:8080/session/all: this api is to view all the session entity. It has userId and sessionId. 
+http://localhost:8080/session/addSession: this api is to add a session. the request body should look like:  
+{  
+	"userId": "ABC456XYZ",  
+	"sessionId":"XYZ898ABC"  
+}  
+
+http://localhost:8080/action/all: this api is to view all the action entity.  
+http://localhost:8080/action/addAction: this api is to add a action. the request body should look like:  
+{  
+	"type": "CLICK",  
+	"session":"XYZ456ABC"  
+}  
+the session is the foreign key, the session must exist before using this api.  
+
+http://localhost:8080/properties/all: this api is to view all the action entity.  
+http://localhost:8080/properties/addProperty: this api is to add a property. the request body should look like:  
+{  
+	"locationX": 52,  
+	"locationY": 10,  
+	"actionId": 3   
+}  
+the actionId is the foreign key, the actionId must exist before using this api.   
+The Properties Entity has 5 fields: locationX, locationY, viewedId, pageFrom, pageTo.   
+
+3. The data stored is not very efficient. That's why there are more to learn. Actually, in a correct store procedure, for now, as a new programmer to Kotlin Spring, I think it is not bad.  
+
+4. The error handling is using the default of Kotlin Spring framework. The error code is mentioned in question 1.  
+
+5. Yes. It is deployable. I deployed it on Cybera server. It's for free. 
+API:  
+
+Get Method:  
+http://199.116.235.221:8080/session/all  
+http://199.116.235.221:8080/action/all    
+http://199.116.235.221:8080/properties/all   
+
+Post Method (for these APIs, you may want to test it with PostMan, because it needs request JSON body):  
+http://199.116.235.221:8080/session/addSession  
+http://199.116.235.221:8080/action/addAction  
+http://199.116.235.221:8080/properties/addProperty  
