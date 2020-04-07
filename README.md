@@ -60,7 +60,8 @@ The data stored is not very efficient. That's why there are more to learn. Actua
 The error handling is using the default of Kotlin Spring framework. The error code is mentioned in question 1.  
 
 5.  
-Yes. It is deployable. I deployed it on Cybera server. It's for free. 
+Yes. It is deployable. I deployed it on Cybera server. It's for free.  
+of Course, Kotlin Spring Boot can also deploy on AWS or Heroku.  
 API:  
 
 Get Method:  
