@@ -2,6 +2,11 @@
 # Author: Zuofu Li.  
 ## if you have anything do not understand, please let me know. thanks   
   
+# Instructions if run it locally  
+1. download the project.  
+2. import the project in IntelliJ (or other IDE you would prefer).  
+3. build the project and run the application.  
+
 # Follow Up Question   
 According to the Twelve-Factor App concepts, I learnt that the cloud-scalable application should have the application setup automation, then it is easier for beginners to learn the program and get started. For example, the application may setup in docker containers, then it is easy for beginners to docker compose up to start the application. Moreover, the application should have an automatically deployment, then every time the programmer push to master or dev branch, the application should deploy it automatically. These two are just examples. There must be more procedures that can be setup automatically.   
 
