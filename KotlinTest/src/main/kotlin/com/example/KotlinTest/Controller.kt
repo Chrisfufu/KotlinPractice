@@ -12,10 +12,9 @@ import java.util.*
 */
 @RestController
 @RequestMapping("/session")
-class SessionController(val sessionRepository: SessionRepository){
+class SessionController(@Autowired val sessionRepository: SessionRepository){
 
     @GetMapping("/all")
-    @Autowired
     fun all(): MutableIterable<Session> = this.sessionRepository.findAll()
 
     @PostMapping("/addSession")
@@ -42,10 +41,9 @@ class SessionController(val sessionRepository: SessionRepository){
 */
 @RestController
 @RequestMapping("/action")
-class ActionsController(val actionsRepository: ActionsRepository, val sessionRepository: SessionRepository){
+class ActionsController(@Autowired val actionsRepository: ActionsRepository, @Autowired val sessionRepository: SessionRepository){
 
     @GetMapping("/all")
-    @Autowired
     fun all(): MutableIterable<Actions> = this.actionsRepository.findAll()
 
     @PostMapping("/addAction")
@@ -67,7 +65,7 @@ class ActionsController(val actionsRepository: ActionsRepository, val sessionRep
 */
 @RestController
 @RequestMapping("/properties")
-class PropertiesController(val actionsRepository: ActionsRepository, val propertiesRepository: PropertiesRepository){
+class PropertiesController(@Autowired val actionsRepository: ActionsRepository, @Autowired val propertiesRepository: PropertiesRepository){
     @GetMapping("/all")
     fun all(): MutableIterable<Properties> = this.propertiesRepository.findAll()
 
