@@ -58,9 +58,11 @@ The data stored is not very efficient. That's why there are more to learn. Actua
 
 4.  
 The error handling is using the default of Kotlin Spring framework. The error code is mentioned in question 1.  
+The Dependency Injection would also handle the errors by setting up @inject or @Autowired, Then for each service, we could have the custom error handling. 
 
 5.  
-Yes. It is deployable. I deployed it on Cybera server. It's for free. 
+Yes. It is deployable. I deployed it on Cybera server. It's for free.  
+of Course, Kotlin Spring Boot can also deploy on AWS or Heroku.  
 API:  
 
 Get Method:  
