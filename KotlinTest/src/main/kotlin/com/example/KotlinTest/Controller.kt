@@ -1,5 +1,6 @@
 package com.example.KotlinTest
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 import java.util.*
@@ -14,9 +15,11 @@ import java.util.*
 class SessionController(val sessionRepository: SessionRepository){
 
     @GetMapping("/all")
+    @Autowired
     fun all(): MutableIterable<Session> = this.sessionRepository.findAll()
 
     @PostMapping("/addSession")
+    @Autowired
     fun addSession(@RequestBody request: SessionRequest) {
         val userId = request.userId
         val sessionId = request.sessionId
@@ -25,6 +28,7 @@ class SessionController(val sessionRepository: SessionRepository){
     }
 
     @GetMapping("/{id}")
+    @Autowired
     fun byName(@PathVariable(value = "id") id: Long): Optional<Session> {
         val hotelsByName = this.sessionRepository.findById(id)
         return hotelsByName
@@ -43,9 +47,11 @@ class SessionController(val sessionRepository: SessionRepository){
 class ActionsController(val actionsRepository: ActionsRepository, val sessionRepository: SessionRepository){
 
     @GetMapping("/all")
+    @Autowired
     fun all(): MutableIterable<Actions> = this.actionsRepository.findAll()
 
     @PostMapping("/addAction")
+    @Autowired
     fun addAction(@RequestBody request: ActionRequest) {
         val type = request.type
 
@@ -66,9 +72,11 @@ class ActionsController(val actionsRepository: ActionsRepository, val sessionRep
 @RequestMapping("/properties")
 class PropertiesController(val actionsRepository: ActionsRepository, val propertiesRepository: PropertiesRepository){
     @GetMapping("/all")
+    @Autowired
     fun all(): MutableIterable<Properties> = this.propertiesRepository.findAll()
 
     @PostMapping("/addProperty")
+    @Autowired
     fun addProperty(@RequestBody request: PropertyRequest) {
         var locationX: Int? = request.locationX
         var locationY: Int? = request.locationY
